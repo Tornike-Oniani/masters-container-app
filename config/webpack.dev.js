@@ -19,6 +19,7 @@ const devConfig = {
       name: 'container',
       remotes: {
         management: 'management@http://localhost:8081/remoteEntry.js',
+        communication: 'communication@http://localhost:8082/remoteEntry.js',
       },
     }),
     new HtmlWebpackPlugin({
