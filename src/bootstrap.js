@@ -9,6 +9,7 @@ const navigateTo = (url) => {
 };
 
 const router = async () => {
+  console.log(location.pathname);
   const routes = [
     { path: '/', view: () => console.log('Viewing root') },
     { path: '/manage', view: mountManagement },
@@ -18,7 +19,7 @@ const router = async () => {
   const potentialMatches = routes.map((route) => {
     return {
       route,
-      isMatch: location.pathname === route.path,
+      isMatch: location.pathname.split(/(?=\/)/g)[0] === route.path,
     };
   });
 
@@ -33,7 +34,23 @@ const router = async () => {
   }
 
   const root = document.getElementById('root');
-  match.route.view(root);
+
+  // When navigation happens in micro frontend update the browser URL correspondingly.
+  // This is necessary because micro frontends use MemoryRouters and don't alter the browser address bar themselves.
+  let trailingRoute = location.pathname.split(/(?=\/)/g);
+  trailingRoute.shift();
+  trailingRoute = trailingRoute.join('');
+  trailingRoute ? '/' : trailingRoute;
+
+  const { onParentNavigate } = match.route.view(root, {
+    onNavigate: (mfRoute) => {
+      if (trailingRoute !== mfRoute) {
+        history.pushState(null, null, match.route.path + mfRoute);
+      }
+    },
+  });
+
+  onParentNavigate(trailingRoute);
 };
 
 window.addEventListener('popstate', router);
