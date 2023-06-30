@@ -28,13 +28,35 @@
   color: inherit;
   text-decoration: none;
   display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 12px 24px;
   gap: 6px;
 }
 
+.menu-item__icon {
+  fill: #8699ad;
+  height: 18px;
+  width: 18px;
+  display: block;
+}
+
 #mf-root {
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .application-shell {
+    flex-direction: column;
+  }
+
+  .side-menu {
+    width: 100%;
+    height: auto;
+  }
+
+  .side-menu ul {
+    margin: 0;
+    display: flex;
+  }
 }
