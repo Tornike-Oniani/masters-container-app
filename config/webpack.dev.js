@@ -8,11 +8,11 @@ const devConfig = {
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:3000/',
     filename: 'bundle.js',
   },
   devServer: {
-    port: 8080,
+    port: 3000,
     historyApiFallback: true,
     static: {
       directory: path.join(__dirname, '../public'),
@@ -22,9 +22,9 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        management: 'management@http://localhost:8081/remoteEntry.js',
-        communication: 'communication@http://localhost:8082/remoteEntry.js',
-        authentication: 'authentication@http://localhost:8083/remoteEntry.js',
+        management: 'management@http://localhost:3001/remoteEntry.js',
+        communication: 'communication@http://localhost:3002/remoteEntry.js',
+        authentication: 'authentication@http://localhost:3003/remoteEntry.js',
       },
     }),
   ],

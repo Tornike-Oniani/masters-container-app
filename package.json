@@ -18,11 +18,16 @@
     "@svgr/webpack": "^8.0.1",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",
+    "miragejs": "^0.1.47",
     "style-loader": "^3.3.3",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0",
     "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.5"
   }
 }

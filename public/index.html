@@ -9,17 +9,14 @@
   </head>
   <body>
     <div class="application-shell">
-      <div class="side-menu">
-        <ul>
-          <li class="menu-item">
-            <a href="/manage" data-link> Manage </a>
-          </li>
-          <li class="menu-item">
-            <a href="/tasks" data-link>Tasks</a>
-          </li>
-        </ul>
+      <div id="side-shared-element"></div>
+      <div class="content">
+        <div class="top-bar">
+          <div id="user-name">Tornike Oniani</div>
+          <a id="logout-button" href="/logout/" data-link>Log out</a>
+        </div>
+        <div id="mf-root"></div>
       </div>
-      <div id="mf-root"></div>
     </div>
   </body>
 </html>
